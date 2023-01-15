@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Create Products Page</summary>
 	[PublishedModel("createProductsPage")]
-	public partial class CreateProductsPage : PublishedContentModel, IHeaderProperties, IProductProperties
+	public partial class CreateProductsPage : PublishedContentModel, IHeaderProperties, IProductProperties, IVisibilityProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -102,5 +102,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "11.0.0+d713b38")]
 		[ImplementPropertyType("productPrice")]
 		public virtual int ProductPrice => global::Umbraco.Cms.Web.Common.PublishedModels.ProductProperties.GetProductPrice(this, _publishedValueFallback);
+
+		///<summary>
+		/// Hide: If set to true, it you want to hide it from navigation, sitemaps and search results.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "11.0.0+d713b38")]
+		[ImplementPropertyType("hide")]
+		public virtual bool Hide => global::Umbraco.Cms.Web.Common.PublishedModels.VisibilityProperties.GetHide(this, _publishedValueFallback);
 	}
 }
