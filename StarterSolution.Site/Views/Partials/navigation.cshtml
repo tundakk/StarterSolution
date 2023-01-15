@@ -2,7 +2,7 @@
 
 @{
     var homePage = Umbraco.AssignedContentItem.AncestorOrSelf<HomePage>();
-    var productPage = Umbraco.AssignedContentItem.AncestorOrSelf<ProductPage>();
+    var children = homePage.Children.Where(x => x.IsVisible());
 
 }
    <!-- Navigation-->
@@ -17,10 +17,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="@productPage.Url()">@productPage.Name</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        @foreach( var child in children)
+                        {
+                            <li><a class="dropdown-item" href="@child.Url()">@child.Name</a></li>
+                        }
                     </ul>
                 </li>
             </ul>
